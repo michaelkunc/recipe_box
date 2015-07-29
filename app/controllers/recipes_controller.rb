@@ -14,6 +14,11 @@ class RecipesController < ApplicationController
 
   def create
     @recipe = Recipe.new(params[:recipe_params])
+    if @recipe.save
+      redirect_to @recipe, notice:  "Successfully created recipe"
+    else
+      render 'new'
+    end
   end
 
 
